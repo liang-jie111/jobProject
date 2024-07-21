@@ -460,10 +460,10 @@ def searchRange(nums, target):
         while l < r:
             mid = (l + r) // 2
             if nums[mid] >= target:
-                right = mid
+                r = mid
             else:
-                left = mid + 1
-        return left
+                l = mid + 1
+        return l
 
     # 首个target如果存在，一定是首个大于target-1的元素
     start = search(target)
