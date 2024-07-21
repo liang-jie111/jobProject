@@ -25,16 +25,16 @@ def merge(seq, low, mid, high):
 
 
 seq = [5, 4, 3, 0, 1, 2, 7, 5, 11, 9]
-i = 1 # group length，从每组只有1个数字开始
-while i < len(seq):
-    print('子数组 长度 : ', i)
+gap = 1 # group length，从每组只有1个数字开始
+while gap < len(seq):
+    print('子数组 长度 : ', gap)
     low = 0
     while low < len(seq):
-        mid = low + i
-        high = min(low + 2 * i, len(seq))
+        mid = low + gap
+        high = min(low + 2 * gap, len(seq))
         if mid < high:
             print('low ', low, 'mid:', mid, 'high:', high)
             merge(seq, low, mid, high)
             print('\n')
-        low += 2*i
-    i *= 2
+        low += 2*gap
+    gap *= 2

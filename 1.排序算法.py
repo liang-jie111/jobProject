@@ -5,9 +5,10 @@ def bubble_sort(a):
     for i in range(0, len(a) - 1):
         for j in range(0, len(a) - 1 - i):
             if a[j] > a[j + 1]:
-                tmp = a[j]
-                a[j] = a[j + 1]
-                a[j + 1] = tmp
+                a[j], a[j+1] = a[j+1], a[j]
+                # tmp = a[j]
+                # a[j] = a[j + 1]
+                # a[j + 1] = tmp
     return a
 
 
@@ -48,21 +49,22 @@ def insertion_sort(a):
 '''
 
 
-def heapify(arr, n, i):
-    largest = i
-    l = 2 * i + 1  # left = 2*i + 1
-    r = 2 * i + 2  # right = 2*i + 2
+def heapify(arr, n, idx):
+    # idx: 需要调整的位置下标
+    largest = idx
+    l = 2 * idx + 1  # left = 2*i + 1
+    r = 2 * idx + 2  # right = 2*i + 2
 
     # 找到最大的节点
-    if l < n and arr[i] < arr[l]:
+    if l < n and arr[idx] < arr[l]:
         largest = l
 
     if r < n and arr[largest] < arr[r]:
         largest = r
 
     # 如果最大节点不是父节点，交换它们
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
+    if largest != idx:
+        arr[idx], arr[largest] = arr[largest], arr[idx]
 
         # 递归调整最大节点
         heapify(arr, n, largest)
